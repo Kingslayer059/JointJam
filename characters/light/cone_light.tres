@@ -1,0 +1,21 @@
+[gd_resource type="AnimatedTexture" load_steps=6 format=3 uid="uid://dqnyj6q6u1hra"]
+
+[ext_resource type="Texture2D" uid="uid://2eaqt8og664l" path="res://characters/light/Conic_Light_01.png" id="1_thqlk"]
+[ext_resource type="Texture2D" uid="uid://dg7aoliu0wag" path="res://characters/light/Conic_Light_02.png" id="2_q6qm0"]
+[ext_resource type="Texture2D" uid="uid://cglkf57xa4ojc" path="res://characters/light/Conic_Light_03.png" id="3_wcbiu"]
+[ext_resource type="Texture2D" uid="uid://fal5y6a4swe6" path="res://characters/light/Conic_Light_04.png" id="4_ho3yg"]
+[ext_resource type="Texture2D" uid="uid://dlvxk88d6b801" path="res://characters/light/Conic_Light_05.png" id="5_7n5k6"]
+
+[resource]
+frames = 5
+speed_scale = 6.0
+frame_0/texture = ExtResource("1_thqlk")
+frame_0/duration = 0.2
+frame_1/texture = ExtResource("2_q6qm0")
+frame_1/duration = 0.2
+frame_2/texture = ExtResource("3_wcbiu")
+frame_2/duration = 0.2
+frame_3/texture = ExtResource("4_ho3yg")
+frame_3/duration = 0.2
+frame_4/texture = ExtResource("5_7n5k6")
+frame_4/duration = 0.2
