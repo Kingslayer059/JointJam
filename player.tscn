@@ -1,0 +1,150 @@
+[gd_scene load_steps=28 format=3 uid="uid://c2kwuloh106an"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_7ptme"]
+[ext_resource type="Texture2D" uid="uid://cvwn7jpytdnda" path="res://characters/Marinette/Marinette_Idle_01.png" id="2_dll4w"]
+[ext_resource type="Texture2D" uid="uid://dbaxp0ky73pw8" path="res://characters/Marinette/Marinette_Idle_02.png" id="3_8mk7r"]
+[ext_resource type="Texture2D" uid="uid://ctoa1qm0cnu2s" path="res://characters/Marinette/Marinette_Idle_03.png" id="4_tiihq"]
+[ext_resource type="Texture2D" uid="uid://5lag21y5l0j1" path="res://characters/Marinette/Marinette_Idle_04.png" id="5_lsrw8"]
+[ext_resource type="Texture2D" uid="uid://ckujwvn7jkr3n" path="res://characters/Marinette/Marinette_Idle_05.png" id="6_4rbo7"]
+[ext_resource type="Texture2D" uid="uid://dhkk8e5togj12" path="res://characters/Marinette/Marinette_Idle_06.png" id="7_y8ubd"]
+[ext_resource type="Texture2D" uid="uid://dcffatrlp12f6" path="res://characters/Marinette/Marinette_Idle_07.png" id="8_udg3d"]
+[ext_resource type="Texture2D" uid="uid://c72otb57nvp71" path="res://characters/Marinette/Marinette_Idle_08.png" id="9_cf38a"]
+[ext_resource type="Texture2D" uid="uid://cea4ogytoh5c8" path="res://characters/Marinette/Marinette_Idle_09.png" id="10_qs2xj"]
+[ext_resource type="Texture2D" uid="uid://dcyvqyeetrolv" path="res://characters/Marinette/Marinette_Idle_10.png" id="11_m6id2"]
+[ext_resource type="Texture2D" uid="uid://cmujn3sj3nfyf" path="res://characters/Marinette/Marinette_Idle_11.png" id="12_1e0en"]
+[ext_resource type="Texture2D" uid="uid://wab64fa3hvx" path="res://characters/Marinette/Marinette_Idle_12.png" id="13_ogp1x"]
+[ext_resource type="Texture2D" uid="uid://bupwggpn3e3uq" path="res://characters/Marinette/Marinette_Idle_13.png" id="14_8dvt4"]
+[ext_resource type="Texture2D" uid="uid://cqki1p8g7k4py" path="res://characters/Marinette/Marinette_Idle_14.png" id="15_3o75f"]
+[ext_resource type="Texture2D" uid="uid://cftnscwcumuk5" path="res://characters/Marinette/Marinette_Idle_15.png" id="16_ab1gm"]
+[ext_resource type="Texture2D" uid="uid://5i5tfha6umvn" path="res://characters/Marinette/Marinette_Walk_01.png" id="17_18rs1"]
+[ext_resource type="Texture2D" uid="uid://d4g83cowws7j4" path="res://characters/Marinette/Marinette_Walk_02.png" id="18_h337p"]
+[ext_resource type="Texture2D" uid="uid://dit7ybcp1gaq2" path="res://characters/Marinette/Marinette_Walk_03.png" id="19_jr7eg"]
+[ext_resource type="Texture2D" uid="uid://c0gtjgxuud417" path="res://characters/Marinette/Marinette_Walk_04.png" id="20_dfnw7"]
+[ext_resource type="Texture2D" uid="uid://byrdqjom1v1l6" path="res://characters/Marinette/Marinette_Walk_05.png" id="21_ej1vm"]
+[ext_resource type="Texture2D" uid="uid://chbyvl383xemd" path="res://characters/Marinette/Marinette_Walk_06.png" id="22_r1nlf"]
+[ext_resource type="Texture2D" uid="uid://c3ydblnx5gjfq" path="res://characters/Marinette/Marinette_Walk_07.png" id="23_3jiea"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ll1mm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_dll4w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8mk7r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tiihq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_lsrw8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4rbo7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_y8ubd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_udg3d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_cf38a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qs2xj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_m6id2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_1e0en")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ogp1x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_8dvt4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_3o75f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ab1gm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_18rs1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_h337p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_jr7eg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_dfnw7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_ej1vm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_r1nlf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_3jiea")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_80in7"]
+radius = 37.1214
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gl8kv"]
+radius = 44.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yyjt8"]
+bg_color = Color(0.905882, 0.0392157, 0.0666667, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_7ptme")
+
+[node name="Marinette" type="AnimatedSprite2D" parent="."]
+position = Vector2(-6, -83)
+sprite_frames = SubResource("SpriteFrames_ll1mm")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_80in7")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="HurtBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_gl8kv")
+debug_color = Color(0.858824, 0.34902, 0.282353, 0.419608)
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+light_mask = 8
+offset_left = -844.0
+offset_top = 347.0
+offset_right = -448.0
+offset_bottom = 384.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_yyjt8")
+value = 100.0
+show_percentage = false

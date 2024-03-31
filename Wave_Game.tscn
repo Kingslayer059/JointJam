@@ -1,0 +1,115 @@
+[gd_scene load_steps=9 format=3 uid="uid://cdfae3es8qufa"]
+
+[ext_resource type="PackedScene" uid="uid://c2kwuloh106an" path="res://player.tscn" id="1_44ano"]
+[ext_resource type="Script" path="res://Wave_Game.gd" id="1_tglxo"]
+[ext_resource type="PackedScene" uid="uid://ocd2g0pcabce" path="res://gun.tscn" id="2_6gc81"]
+[ext_resource type="PackedScene" uid="uid://b4p6bhgd0u2ax" path="res://pine_tree.tscn" id="2_htguj"]
+[ext_resource type="PackedScene" uid="uid://cvkqlsqccsqvq" path="res://mob.tscn" id="3_tqvtu"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tdiuf"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_c8a3n"]
+polygon = PackedVector2Array(-3645, -2031, 5567, -2038, 5581, 3126, -3649, 3132)
+
+[sub_resource type="Curve2D" id="Curve2D_riaml"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -3491, -1880, 0, 0, 0, 0, 5369, -1834, 0, 0, 0, 0, 5342, 2849, 0, 0, 0, 0, -3470, 2835, 0, 0, 0, 0, -3499, -1882)
+}
+point_count = 5
+
+[node name="Game" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_tglxo")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+light_mask = 5
+visibility_layer = 4
+offset_left = -3652.0
+offset_top = -2043.0
+offset_right = 5573.0
+offset_bottom = 3117.0
+color = Color(0, 0.678431, 0.0156863, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect"]
+position = Vector2(3652, 2043)
+shape = SubResource("WorldBoundaryShape2D_tdiuf")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="ColorRect"]
+position = Vector2(3652, 2043)
+occluder = SubResource("OccluderPolygon2D_c8a3n")
+occluder_light_mask = 5
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.572549)
+
+[node name="Label" type="Label" parent="GameOver/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -430.0
+offset_top = -76.0
+offset_right = 430.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player" parent="." instance=ExtResource("1_44ano")]
+position = Vector2(989, 555)
+
+[node name="Gun" parent="Player" instance=ExtResource("2_6gc81")]
+position = Vector2(-2, -25)
+
+[node name="PineTree1" parent="." instance=ExtResource("2_htguj")]
+position = Vector2(424, 295)
+
+[node name="PineTree2" parent="." instance=ExtResource("2_htguj")]
+position = Vector2(620, 809)
+
+[node name="PineTree3" parent="." instance=ExtResource("2_htguj")]
+position = Vector2(1424, 242)
+
+[node name="PineTree4" parent="." instance=ExtResource("2_htguj")]
+position = Vector2(1390, 330)
+
+[node name="PineTree5" parent="." instance=ExtResource("2_htguj")]
+position = Vector2(1485, 292)
+
+[node name="Mob" parent="." instance=ExtResource("3_tqvtu")]
+position = Vector2(215, 666)
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_riaml")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+unique_name_in_owner = true
+position = Vector2(-3491, -1880)
+rotation = 0.00519183
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.6
+autostart = true
+
+[connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

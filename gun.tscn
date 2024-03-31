@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://ocd2g0pcabce"]
+
+[ext_resource type="Script" path="res://gun.gd" id="1_vjeof"]
+[ext_resource type="Texture2D" uid="uid://cwuoilsso7swk" path="res://characters/light/Conic Light.png" id="8_2x1x7"]
+[ext_resource type="Texture2D" uid="uid://b5hxueoq8q2ng" path="res://characters/light/Circle_Light_01.png" id="8_dqw4q"]
+[ext_resource type="Texture2D" uid="uid://ddyfca877sbom" path="res://characters/Lantern_01.png" id="9_c1llu"]
+[ext_resource type="Texture2D" uid="uid://cfjxe7aipmatl" path="res://characters/light/Circle_Light_02.png" id="9_wq55r"]
+[ext_resource type="Texture2D" uid="uid://b71u7dx8aabsq" path="res://characters/light/Circle_Light_03.png" id="10_tqnpd"]
+[ext_resource type="Texture2D" uid="uid://da67sg0yqxysf" path="res://characters/light/Circle_Light_04.png" id="11_37by7"]
+[ext_resource type="Texture2D" uid="uid://dt4nuvqwtrdca" path="res://characters/light/Circle_Light_05.png" id="12_fl3o2"]
+[ext_resource type="Texture2D" uid="uid://c7dlxe0un83ph" path="res://characters/light/Circle_Light_06.png" id="13_wnnby"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_darvp"]
+radius = 170.074
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_aiah3"]
+frames = 6
+speed_scale = 60.0
+frame_0/texture = ExtResource("8_dqw4q")
+frame_1/texture = ExtResource("9_wq55r")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("10_tqnpd")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("11_37by7")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("12_fl3o2")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("13_wnnby")
+frame_5/duration = 1.0
+
+[node name="Gun" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_vjeof")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(59, 0)
+shape = SubResource("CircleShape2D_darvp")
+
+[node name="WeaponPivot" type="Marker2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="AttackRange" type="Marker2D" parent="."]
+unique_name_in_owner = true
+
+[node name="AttackCone" type="Area2D" parent="AttackRange"]
+position = Vector2(59, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AttackRange/AttackCone"]
+polygon = PackedVector2Array(17, -18, 776, -274, 775, 278, 17, 20)
+
+[node name="PointLight2D3" type="PointLight2D" parent="AttackRange/AttackCone"]
+scale = Vector2(4.35938, 4.35938)
+energy = 0.5
+blend_mode = 2
+range_item_cull_mask = 4
+texture = SubResource("AnimatedTexture_aiah3")
+
+[node name="PointLight2D2" type="PointLight2D" parent="AttackRange/AttackCone"]
+scale = Vector2(2.6875, 2.6875)
+blend_mode = 2
+texture = SubResource("AnimatedTexture_aiah3")
+
+[node name="PointLight2D" type="PointLight2D" parent="AttackRange/AttackCone"]
+position = Vector2(356.5, 0)
+scale = Vector2(6.57031, 4.34375)
+blend_mode = 2
+texture = ExtResource("8_2x1x7")
+
+[node name="Lantern" type="Sprite2D" parent="AttackRange/AttackCone"]
+position = Vector2(13, -12)
+scale = Vector2(0.71875, 0.71875)
+texture = ExtResource("9_c1llu")
+
+[node name="ShootingPoint" type="Marker2D" parent="AttackRange/AttackCone/Lantern"]
+unique_name_in_owner = true
+position = Vector2(-4, 14)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
