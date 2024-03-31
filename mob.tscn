@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://cvkqlsqccsqvq"]
+
+[ext_resource type="Script" path="res://mob.gd" id="1_68suy"]
+[ext_resource type="Texture2D" uid="uid://c802hcqii2by6" path="res://characters/bat/Bat Fly.png" id="2_xbs5k"]
+[ext_resource type="Texture2D" uid="uid://b4a8wuyx4i36c" path="res://characters/bat/Bat_Fly_02.png" id="3_5nfsw"]
+[ext_resource type="Texture2D" uid="uid://cyugwanfhwlf8" path="res://characters/bat/Bat_Hurt_02.png" id="4_04lep"]
+[ext_resource type="Texture2D" uid="uid://dns6erdjrsgim" path="res://characters/bat/Bat_Hurt_01.png" id="5_efm24"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b1501"]
+radius = 39.1152
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4bth0"]
+animations = [{
+"frames": [{
+"duration": 1.5,
+"texture": ExtResource("2_xbs5k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5nfsw")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_04lep")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_efm24")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}]
+
+[node name="Mob" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_68suy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_b1501")
+
+[node name="Bat" type="AnimatedSprite2D" parent="."]
+position = Vector2(4, -5)
+sprite_frames = SubResource("SpriteFrames_4bth0")
+animation = &"hurt"
+
+[node name="hurt_cooldown" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="hurt_cooldown" to="." method="_on_hurt_cooldown_timeout"]
